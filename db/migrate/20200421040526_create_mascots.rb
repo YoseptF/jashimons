@@ -5,6 +5,8 @@ class CreateMascots < ActiveRecord::Migration[6.0]
     create_table :mascots do |t|
       t.string :name
       t.text :message
+      t.float :priceMoney
+      t.float :pricePoints
 
       t.timestamps
     end
