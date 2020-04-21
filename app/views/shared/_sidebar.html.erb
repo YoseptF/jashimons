@@ -7,9 +7,11 @@
     <i class="fas fa-user-alt"></i>
     <span>Profile</span>
   </div>
-  <div class="read-first">
-    <i class="fas fa-cogs"></i>
-    <span>Options</span>
+  <div class="config">
+    <%= link_to config_path do %>
+      <i class="fas fa-cogs"></i>
+      <span>Options</span>
+    <% end %>
   </div>
   <div class="read-first">
     <i class="fas fa-comment-alt"></i>
@@ -19,7 +21,7 @@
     <i class="fas fa-cat"></i>
     <span>Collection</span>
   </div>
-  <div class="read-first">
+  <div class="marketplace">
     <%= link_to mascots_path do %>
       <i class="fas fa-store"></i>
       <span>Marketplace</span>

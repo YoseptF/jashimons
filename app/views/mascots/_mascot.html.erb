@@ -1,18 +1,17 @@
 <div class="mascotCard card col-3" style="width: 18rem;">
   <%= first_state(mascot.animations) %>
   <%= select_tag 'current_animation', options_for_select(animation_states(mascot.animations)) %>
-  <div class="card-body">
-    <h5 class="card-title"><%= mascot.name %></h5>
-    <%= mascot.priceMoney %>
-    <%= mascot.pricePoints %>
+  <div class="card-body row">
+    <h5 class="card-title col-5 mascotName"><%= mascot.name %></h5>
+    <div class="ml-auto d-flex flex-column">
+      <span><i class="fas fa-coins"></i> <%= mascot.priceMoney %></span>
+      <span><i class="fas fa-blog jashiPoints"></i> <%= mascot.pricePoints %></span>
+    </div>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
+    <li class="list-group-item">
+    <%= button_tag "buy #{mascot.name}", class: 'btn btn-block'%>
+    </li>
   </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
+  
 </div>

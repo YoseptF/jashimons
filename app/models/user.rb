@@ -7,4 +7,6 @@ class User < ApplicationRecord
       where('isMain = ?', true)
     end
   end
+
+  has_one_attached :avatar
 end

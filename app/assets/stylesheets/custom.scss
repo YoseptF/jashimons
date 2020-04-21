@@ -1,7 +1,10 @@
+
+
 @import "bootstrap/dist/css/bootstrap";
 $obscure: #181a1b;
 $clear: #1e1f21;
 $blue: #2d3a51;
+$light-blue: #0a558b;
 
 body {
   background: $clear;
@@ -16,6 +19,14 @@ select{
   font-size: 1rem;
   line-height: 1rem;
   padding: 0.25rem;
+}
+
+button {
+  background-color: lighten($blue, 25%) !important;
+  text-transform: capitalize;
+  &:hover {
+    background: lighten($blue, 30%) !important;
+  }
 }
 
 aside{
@@ -36,6 +47,32 @@ aside{
     color: white;
   }
 }
+
+.welcome{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: $light-blue;
+  height: 100vh;
+  width: 100vw;
+  .navi{
+    img{
+      height: 80px;
+      width: 80px;
+    }
+  }
+  h1{
+    font-family: 'Lilita One', cursive;
+  }
+  .btn{
+    background: rgb(61, 56, 114);
+    color: white;
+    &:hover{
+      background: lighten(rgb(61, 56, 114), 15%);
+    }
+  }
+}
+
 
 nav {
   background: $obscure;
@@ -66,21 +103,24 @@ nav {
   color: white;
   .card-header {
     border-bottom: 1px solid $blue;
-    button {
-      background: lighten($blue, 25%);
-      &:hover {
-        background: lighten($blue, 30%);
-      }
-    }
+    
   }
   .mascotCard{
     background: $obscure;
     img{
       max-height: 200px;
+      max-width: 200px;
+      margin: 0 auto;
     }
     .list-group-item{
       background: $obscure;
       color: white;
+    }
+    .mascotName{
+      text-transform: capitalize;
+    }
+    .jashiPoints{
+      transform: rotate3d(0, 1, 0, 180deg);
     }
   }
 }
