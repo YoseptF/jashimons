@@ -1,0 +1,22 @@
+<div class="card mainCard">
+  <div class="card-header d-flex">
+    <span>Profile</span>
+  </div>
+  <div class="card-body row">
+    <div class="card col-4 mx-3 p-0 profile">
+      <div class="card-header m-0 p-0">
+        <%= image_tag('https://s3.amazonaws.com/kappamonbot/v2/asset/kappamon_graphic_FINAL.svg', class: 'card-img-top', alt: 'Card image cap') %>
+      </div>
+      <div class="card-body row position-relative">
+        <div class="profile-picture-wrapper">
+          <%= image_tag(url_for(current_user.avatar), class: 'profile-picture') %>
+          <h1 class="d-block"><%= current_user.username %></h1>
+        </div>
+        <div class="profile-content row justify-content-center w-100 text-center">
+          <div class="col-6 mx-auto">Collection</div>
+          <div class="col-6 mx-auto">Commands</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

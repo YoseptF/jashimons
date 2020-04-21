@@ -11,10 +11,11 @@ class MascotsController < ApplicationController
     @mascot = Mascot.new(mascot_params)
 
     if @mascot.save
-      p 'yay', mascot_params
+      flash[:success] = 'Mascot created'
     else
-      p 'nay', mascot_params
+      flash[:danger] = 'Mascot not created'
     end
+    redirect_to new_mascot_path
   end
 
   private

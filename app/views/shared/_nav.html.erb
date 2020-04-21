@@ -3,8 +3,11 @@
     <div class="logoWrapper">
       <%= link_to image_tag('logo.png'), root_path %>
     </div>
-    <div class="right ml-auto">
-      <%= link_to 'logout', logout_path, method: 'delete', class: 'btn' %>
+    <div class="right ml-auto d-flex align-items-center">
+      <% if current_user %>
+        <%= image_tag(url_for(current_user.avatar), class: 'avatar') %>
+      <% end %>
+      <%= link_to 'logout', logout_path, method: 'delete', class: 'btn m-3 text-light' %>
     </div>
   </div>
 </nav>

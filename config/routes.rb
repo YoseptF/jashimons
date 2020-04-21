@@ -2,7 +2,10 @@
 
 Rails.application.routes.draw do
   resources :mascots, only: %i[index create new]
-  resource :config, only: %i[show]
+  resource :config, only: %i[edit update edit]
+  resource :user, only: %i[show] do
+    resources :mascots, only: %i[index]
+  end
   get "/login", to: "sessions#login"
   delete "/logout", to: "sessions#logout"
   get "/auth", to: "sessions#auth"

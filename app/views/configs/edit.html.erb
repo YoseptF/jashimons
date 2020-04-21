@@ -1,0 +1,30 @@
+<div class="card mainCard">
+  <div class="card-header d-flex">
+    <span>Options</span>
+  </div>
+  <div class="card-body row">
+    <%= form_with model: @config, local: true do |f| %>
+      <fieldset class="my-3 py-3 pl-3 ml-3">
+        <%= f.label :direction, "Facing Direction: ", class: 'mr-3' %>
+        <%= f.radio_button :direction, false, class: 'ml-3' %> Left
+        <%= f.radio_button :direction, true, class: 'ml-3' %> Right
+      </fieldset>
+      <fieldset class="my-3 py-3 pl-3 ml-3">
+        <%= f.label :show, "Show Commands: ", class: 'mr-3' %>
+        <%= f.radio_button :show, false, class: 'ml-3' %> Left
+        <%= f.radio_button :show, true, class: 'ml-3' %> Right
+      </fieldset>
+      <fieldset class="my-3 py-3 pl-3 ml-3">
+        <%= f.label :blackList, "BlackList", class: 'mr-3' %>
+        <%= f.text_area :blackList, class: 'ml-3' %>
+      </fieldset>
+      <fieldset class="my-3 py-3 pl-3 ml-3">
+        <%= f.label :bubble, "Bubble", class: 'mr-3' %>
+        <%= f.text_area :bubble, class: 'ml-3' %>
+      </fieldset>
+      <fieldset class="my-3 py-3 pl-3 ml-3">
+        <%= f.submit %>
+      </fieldset>
+    <% end %>
+  </div>
+</div>

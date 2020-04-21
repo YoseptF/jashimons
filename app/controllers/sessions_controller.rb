@@ -23,16 +23,18 @@ class SessionsController < ApplicationController
   private
 
   def go_to_config(json_user)
+    p json_user
     if User.find_by(id: json_user['id'])
       log_in(User.find(json_user['id']))
     else
       new_user = User.new(username: json_user['login'], email: json_user['email'], id: json_user['id'])
       new_user.avatar.attach(io: URI(json_user['profile_image_url']).open, filename: "#{json_user['login']}.jpg")
       new_user.save
+      Config.create(direction: true, show: false, blackList: '', bubble: '', user_id: new_user.id)
       log_in(new_user)
     end
 
-    redirect_to config_path
+    redirect_to edit_config_path
   end
 
   def twitch_token
