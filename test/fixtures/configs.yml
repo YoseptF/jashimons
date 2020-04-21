@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  direction: false
+  show: false
+  blackList: MyString
+  Booble: MyString
+  user_id: 1
+
+two:
+  direction: false
+  show: false
+  blackList: MyString
+  Booble: MyString
+  user_id: 1
