@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 2020_04_21_041449) do
     t.text "message"
     t.string "animationName"
     t.boolean "animationType"
-    t.integer "duration"
-    t.integer "cooldown"
+    t.float "duration"
+    t.float "cooldown"
     t.boolean "isEnabled"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
@@ -74,6 +74,8 @@ ActiveRecord::Schema.define(version: 2020_04_21_041449) do
   create_table "mascots", force: :cascade do |t|
     t.string "name"
     t.text "message"
+    t.float "priceMoney"
+    t.float "pricePoints"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

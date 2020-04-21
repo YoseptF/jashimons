@@ -1,0 +1,13 @@
+<%= form_with model: @mascot do |f| %>
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name %>
+  <%= f.label :message, "Message" %>
+  <%= f.text_area :message %>
+  <%= f.label :priceMoney, "Price" %>
+  <%= f.number_field :priceMoney, in: 1..20, step: 1 %>
+  <%= f.label :pricePoints, "Points" %>
+  <%= f.number_field :pricePoints, in: 1..20, step: 1 %>
+  <%= f.label :animations, "Animations" %>
+  <%= f.file_field :animations, multiple: true, direct_upload: true %>
+  <%= f.submit %>
+<% end %>
