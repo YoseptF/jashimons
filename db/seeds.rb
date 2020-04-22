@@ -12,9 +12,7 @@ User.create(username: 'joseph', email: 'yosept.flores@gmail.com', main_string: S
 
 Config.create(direction: true, show: true, black_list: '', bubble: '', user_id:1)
 
-Command.create(name: 'sayHi', message: 'hi how are you?', animationName: 'salute', animationType: true, duration: 1.2, cooldown: 3.5, isEnabled: true, user_id:1)
-
-MascotCollection.create(user_id: 1, default: 'idle')
+Command.create(name: 'sayHi', message: 'hi how are you?', animation_name: 'salute', animation_type: true, duration: 1.2, cooldown: 3.5, isEnabled: true, user_id:1)
 
 cookie = Mascot.create(name: 'cookie', message: '', price_money: 750, price_points: 3000)
 
@@ -51,7 +49,7 @@ foxxy.animations.attach([
   {io: URI('https://s3.amazonaws.com/kappamonbot/v2/asset/fox_orange_eat.gif').open, filename: 'foxxy_eat.gif'}
   ])
 
-MascotRelationship.create(user_id:1, mascot_id:1, isMain: false)
-MascotRelationship.create(user_id:1, mascot_id:2, isMain: false)
-MascotRelationship.create(user_id:1, mascot_id:3, isMain: true)
+MascotRelationship.create(user_id:1, mascot_id:1, isMain: false, default_animation: 'idle')
+MascotRelationship.create(user_id:1, mascot_id:2, isMain: false, default_animation: 'idle')
+MascotRelationship.create(user_id:1, mascot_id:3, isMain: true, default_animation: 'idle')
 
