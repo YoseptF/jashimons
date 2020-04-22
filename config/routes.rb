@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   resources :mascots, only: %i[index create new]
   resource :config, only: %i[edit update edit]
   resource :user, only: %i[show] do
-    resources :mascots, only: %i[index]
   end
+  get "/:id/mainMascot", to: "mascots#main", as: 'main'
+  post "/buy/:id", to: "mascots#buy", as: 'buy'
   get "/login", to: "sessions#login"
   delete "/logout", to: "sessions#logout"
   get "/auth", to: "sessions#auth"

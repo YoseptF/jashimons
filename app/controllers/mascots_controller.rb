@@ -18,6 +18,11 @@ class MascotsController < ApplicationController
     redirect_to new_mascot_path
   end
 
+  def buy
+    new_mascot = MascotRelationship.create(user_id:current_user.id,mascot_id: params[:id])
+    redirect_to user_mascots_path
+  end
+
   private
 
   def mascot_params

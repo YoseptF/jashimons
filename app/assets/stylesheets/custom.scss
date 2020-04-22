@@ -144,6 +144,15 @@ nav {
     .jashiPoints {
       transform: rotate3d(0, 1, 0, 180deg);
     }
+    .buyable {
+      .btn-block {
+        text-transform: capitalize;
+        background: $purple;
+        &:hover {
+          background: $light-purple;
+        }
+      }
+    }
   }
 
   .profile {
@@ -164,8 +173,7 @@ nav {
         border-radius: 100%;
       }
     }
-    profile-content{
-      
+    profile-content {
     }
   }
 }

@@ -8,10 +8,14 @@
       <span><i class="fas fa-blog jashiPoints"></i> <%= mascot.pricePoints %></span>
     </div>
   </div>
-  <ul class="list-group list-group-flush">
+  <ul class="list-group list-group-flush buyable">
     <li class="list-group-item">
-    <%= button_tag "buy #{mascot.name}", class: 'btn btn-block'%>
+    <%= current_user.mascots.include? mascot %>
+      <% if (current_user.mascots.include? mascot) %>
+        <%= link_to "You Own #{mascot.name}", "javascript:void(0)", class: 'btn btn-block'%>
+      <% else %>
+        <%= link_to "buy #{mascot.name}", buy_path(mascot), method: 'post', class: 'btn btn-block'%>
+      <% end %>
     </li>
   </ul>
-  
 </div>
