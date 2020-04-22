@@ -11,15 +11,13 @@ User.create(username: 'joseph', email: 'yosept.flores@gmail.com')
 
 Config.create(direction: true, show: true, blackList: '', bubble: '', user_id:1)
 
-Command.create(name: 'sayHi', message: 'hi how are you?', animationName: 'salute', animationType: true, duration: 1.2, cooldown: 3.5, isEnabled: true, user_id:1)
-
-MascotCollection.create(user_id: 1, default: 'dance')
+Command.create(name: 'sayHi', message: 'hi how are you?', animation_name: 'salute', animation_type: true, duration: 1.2, cooldown: 3.5, isEnabled: true, user_id:1)
 
 Mascot.create(name: 'cookie', message: '')
 Mascot.create(name: 'sunny', message: '')
 Mascot.create(name: 'foxxy', message: '')
 
-MascotRelationship.create(user_id:1, mascot_id:1, isMain: false)
-MascotRelationship.create(user_id:1, mascot_id:2, isMain: false)
-MascotRelationship.create(user_id:1, mascot_id:3, isMain: true)
+MascotRelationship.create(user_id:1, mascot_id:1, isMain: false, default_animation: 'idle')
+MascotRelationship.create(user_id:1, mascot_id:2, isMain: false, default_animation: 'idle')
+MascotRelationship.create(user_id:1, mascot_id:3, isMain: true, default_animation: 'idle')
 
