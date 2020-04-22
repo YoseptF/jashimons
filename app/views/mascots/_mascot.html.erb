@@ -4,18 +4,22 @@
   <div class="card-body row">
     <h5 class="card-title col-5 mascotName"><%= mascot.name %></h5>
     <div class="ml-auto d-flex flex-column">
-      <span><i class="fas fa-coins"></i> <%= mascot.priceMoney %></span>
-      <span><i class="fas fa-blog jashiPoints"></i> <%= mascot.pricePoints %></span>
+      <span><i class="fas fa-coins"></i> <%= mascot.price_money %></span>
+      <span><i class="fas fa-blog jashiPoints"></i> <%= mascot.price_points %></span>
     </div>
   </div>
   <ul class="list-group list-group-flush buyable">
     <li class="list-group-item">
-    <%= current_user.mascots.include? mascot %>
       <% if (current_user.mascots.include? mascot) %>
         <%= link_to "You Own #{mascot.name}", "javascript:void(0)", class: 'btn btn-block'%>
       <% else %>
         <%= link_to "buy #{mascot.name}", buy_path(mascot), method: 'post', class: 'btn btn-block'%>
       <% end %>
     </li>
+    <% if defined? collection %>
+      <li class="list-group-item">
+        <%= link_to 'Set as default', '#', class:'btn btn-block setDefault' %>
+      </li>
+    <% end %>
   </ul>
 </div>

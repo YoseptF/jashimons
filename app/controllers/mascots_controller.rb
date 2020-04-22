@@ -19,13 +19,21 @@ class MascotsController < ApplicationController
   end
 
   def buy
-    new_mascot = MascotRelationship.create(user_id:current_user.id,mascot_id: params[:id])
-    redirect_to user_mascots_path
+    MascotRelationship.create(user_id: current_user.id, mascot_id: params[:id])
+    redirect_to collection_path
   end
+
+  def collection
+    @mascots = current_user.mascots
+  end
+
+  def main; end
+
+  def set_main; end
 
   private
 
   def mascot_params
-    params.require(:mascot).permit(:name, :message, :priceMoney, :pricePoints, animations: [])
+    params.require(:mascot).permit(:name, :message, :price_money, :price_points, animations: [])
   end
 end

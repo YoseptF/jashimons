@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_04_21_041449) do
   create_table "configs", force: :cascade do |t|
     t.boolean "direction"
     t.boolean "show"
-    t.string "blackList"
+    t.string "black_list"
     t.string "bubble"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(version: 2020_04_21_041449) do
   create_table "mascots", force: :cascade do |t|
     t.string "name"
     t.text "message"
-    t.float "priceMoney"
-    t.float "pricePoints"
+    t.float "price_money"
+    t.float "price_points"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -83,6 +83,9 @@ ActiveRecord::Schema.define(version: 2020_04_21_041449) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
+    t.string "twitch_token"
+    t.string "twitch_refresh"
+    t.string "main_string"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

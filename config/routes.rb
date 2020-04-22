@@ -3,8 +3,8 @@
 Rails.application.routes.draw do
   resources :mascots, only: %i[index create new]
   resource :config, only: %i[edit update edit]
-  resource :user, only: %i[show] do
-  end
+  resource :user, only: %i[show]
+  get "/collection", to: "mascots#collection", as: 'collection'
   get "/:id/mainMascot", to: "mascots#main", as: 'main'
   post "/buy/:id", to: "mascots#buy", as: 'buy'
   get "/login", to: "sessions#login"

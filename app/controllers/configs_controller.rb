@@ -19,7 +19,7 @@ class ConfigsController < ApplicationController
     params.require(:config).permit(
       :direction,
       :show,
-      :blackList,
+      :black_list,
       :bubble
     )
   end

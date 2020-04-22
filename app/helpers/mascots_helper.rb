@@ -10,6 +10,6 @@ module MascotsHelper
   end
 
   def first_state(animations)
-    image_tag(url_for(animations.first), class: 'card-img-top', alt: 'Card image cap') 
+    image_tag(url_for(animations.first), class: 'card-img-top', alt: 'Card image cap')
   end
 end

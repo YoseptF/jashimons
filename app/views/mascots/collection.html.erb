@@ -1,9 +1,9 @@
 <div class="card mainCard">
   <div class="card-header d-flex">
-    <span>Marketplace</span>
+    <span>Collection</span>
     <button class="btn ml-auto">Pursache Jashimons</button>
   </div>
   <div class="card-body row">
-    <%= render  @mascots %>
+  <%= render @mascots, collection: true %>
   </div>
 </div>

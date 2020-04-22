@@ -8,15 +8,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
 
-User.create(username: 'joseph', email: 'yosept.flores@gmail.com')
+User.create(username: 'joseph', email: 'yosept.flores@gmail.com', main_string: SecureRandom.base64(10))
 
-Config.create(direction: true, show: true, blackList: '', bubble: '', user_id:1)
+Config.create(direction: true, show: true, black_list: '', bubble: '', user_id:1)
 
 Command.create(name: 'sayHi', message: 'hi how are you?', animationName: 'salute', animationType: true, duration: 1.2, cooldown: 3.5, isEnabled: true, user_id:1)
 
 MascotCollection.create(user_id: 1, default: 'idle')
 
-cookie = Mascot.create(name: 'cookie', message: '', priceMoney: 750, pricePoints: 3000)
+cookie = Mascot.create(name: 'cookie', message: '', price_money: 750, price_points: 3000)
 
 cookie.animations.attach([
   {io: URI('https://s3.amazonaws.com/kappamonbot/v2/asset/gingerbreadman_blue_sad.gif').open, filename: 'cookie_sad.gif'},
@@ -30,7 +30,7 @@ cookie.animations.attach([
   ])
 
 
-sunny = Mascot.create(name: 'sunny', message: '', priceMoney: 750, pricePoints: 3000)
+sunny = Mascot.create(name: 'sunny', message: '', price_money: 750, price_points: 3000)
 sunny.animations.attach([
   {io: URI('https://s3.amazonaws.com/kappamonbot/v2/asset/dito_yellow_sad.gif').open, filename: 'sunny_sad.gif'},
   {io: URI('https://s3.amazonaws.com/kappamonbot/v2/asset/dito_yellow_greet.gif').open, filename: 'sunny_greet.gif'},
@@ -42,7 +42,7 @@ sunny.animations.attach([
   {io: URI('https://s3.amazonaws.com/kappamonbot/v2/asset/dito_yellow_gift.gif').open, filename: 'sunny_gift.gif'}
   ])
 
-foxxy = Mascot.create(name: 'foxxy', message: '', priceMoney: 750, pricePoints: 3000)
+foxxy = Mascot.create(name: 'foxxy', message: '', price_money: 750, price_points: 3000)
 foxxy.animations.attach([
   {io: URI('https://s3.amazonaws.com/kappamonbot/v2/asset/fox_orange_greet.gif').open, filename: 'foxxy_greet.gif'},
   {io: URI('https://s3.amazonaws.com/kappamonbot/v2/asset/fox_orange_attack.gif').open, filename: 'foxxy_attack.gif'},

@@ -27,10 +27,11 @@ class SessionsController < ApplicationController
     if User.find_by(id: json_user['id'])
       log_in(User.find(json_user['id']))
     else
-      new_user = User.new(username: json_user['login'], email: json_user['email'], id: json_user['id'])
+      new_user = User.new(username: json_user['login'], email: json_user['email'], id: json_user['id'], main_string: SecureRandom.base64(10))
       new_user.avatar.attach(io: URI(json_user['profile_image_url']).open, filename: "#{json_user['login']}.jpg")
       new_user.save
-      Config.create(direction: true, show: false, blackList: '', bubble: '', user_id: new_user.id)
+      MascotCollection.create(user_id: new_user.id, default: 'idle')
+      Config.create(direction: true, show: false, black_list: '', bubble: '', user_id: new_user.id)
       log_in(new_user)
     end
 
