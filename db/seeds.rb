@@ -49,7 +49,7 @@ foxxy.animations.attach([
   {io: URI('https://s3.amazonaws.com/kappamonbot/v2/asset/fox_orange_eat.gif').open, filename: 'foxxy_eat.gif'}
   ])
 
-MascotRelationship.create(user_id:1, mascot_id:1, isMain: false, default_animation: 'idle')
-MascotRelationship.create(user_id:1, mascot_id:2, isMain: false, default_animation: 'idle')
-MascotRelationship.create(user_id:1, mascot_id:3, isMain: true, default_animation: 'idle')
+MascotRelationship.create(user_id:1, mascot_id:1, is_main: false, default_animation: 'idle')
+MascotRelationship.create(user_id:1, mascot_id:2, is_main: false, default_animation: 'idle')
+MascotRelationship.create(user_id:1, mascot_id:3, is_main: true, default_animation: 'idle')
 

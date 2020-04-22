@@ -18,7 +18,11 @@
     </li>
     <% if defined? collection %>
       <li class="list-group-item">
-        <%= link_to 'Set as default', '#', class:'btn btn-block setDefault' %>
+        <% if current_user.mascots.main == mascot %>
+        <%= link_to 'This is your default', 'javascript:void(0)', method: 'post', class:'btn btn-block setDefault' %>
+        <% else %>
+        <%= link_to 'Set as default', set_main_path(mascot), method: 'post', class:'btn btn-block setDefault' %>
+        <% end %>
       </li>
     <% end %>
   </ul>

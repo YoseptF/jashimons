@@ -19,7 +19,7 @@ class MascotsController < ApplicationController
   end
 
   def buy
-    MascotRelationship.create(user_id: current_user.id, mascot_id: params[:id])
+    MascotRelationship.create(user_id: current_user.id, mascot_id: params[:id], default_animation: 'idle')
     redirect_to collection_path
   end
 
@@ -27,9 +27,17 @@ class MascotsController < ApplicationController
     @mascots = current_user.mascots
   end
 
-  def main; end
+  def main
+    @user = User.find_by(main_string: params[:id])
+    render layout: 'main_mascot'
+  end
 
-  def set_main; end
+  def set_main
+    current_user.mascotRelationships.main&.update_attribute(:is_main, false)
+    current_user.mascotRelationships.find_by(mascot_id: params[:id]).update_attribute(:is_main, true)
+
+    redirect_to collection_path
+  end
 
   private
 

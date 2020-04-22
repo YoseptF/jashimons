@@ -33,11 +33,13 @@ select {
   padding: 0.25rem;
 }
 
-button {
-  background-color: lighten($blue, 25%) !important;
+button,
+.btn {
+  background-color: $purple !important;
+  color: white;
   text-transform: capitalize;
   &:hover {
-    background: lighten($blue, 30%) !important;
+    background: $light-purple !important;
   }
 }
 
@@ -175,5 +177,73 @@ nav {
     }
     profile-content {
     }
+  }
+}
+
+.main-mascot-wrapper {
+  height: 20vmax;
+  width: 20vmax;
+  color: white;
+  img {
+    width: 100%;
+  }
+}
+.message {
+  visibility: hidden;
+  position: relative;
+  border: 2px solid white;
+  background-color: $clear;
+  color: #000000;
+  position: absolute;
+  display: table;
+  max-width: 400px;
+  max-height: 250px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: Arial;
+  overflow-y: hidden;
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: -14px;
+    border-style: solid;
+    border-width: 33px 13px 0;
+    display: block;
+    width: 0;
+    z-index: -1;
+    -ms-transform: rotate(46deg);
+    -webkit-transform: rotate(46deg);
+    transform: rotate(46deg);
+    border-color: white transparent;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: -10px;
+    border-style: solid;
+    border-width: 26px 11px 0px;
+    display: block;
+    width: 0;
+    -ms-transform: rotate(46deg);
+    -webkit-transform: rotate(46deg);
+    transform: rotate(46);
+    border-color: $clear transparent;
+  }
+  span {
+    color: white;
+    max-width: 350px;
+    max-height: 250px;
+    height: 100%;
+    line-height: normal;
+    word-wrap: break-word;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding: 20px;
   }
 }

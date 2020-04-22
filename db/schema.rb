@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 2020_04_21_041449) do
   create_table "commands", force: :cascade do |t|
     t.string "name"
     t.text "message"
-    t.string "animationName"
-    t.boolean "animationType"
+    t.string "animation_name"
+    t.boolean "animation_type"
     t.float "duration"
     t.float "cooldown"
     t.boolean "isEnabled"
@@ -56,17 +56,11 @@ ActiveRecord::Schema.define(version: 2020_04_21_041449) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "mascot_collections", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "default"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "mascot_relationships", force: :cascade do |t|
     t.integer "user_id"
     t.integer "mascot_id"
-    t.boolean "isMain"
+    t.boolean "is_main"
+    t.string "default_animation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

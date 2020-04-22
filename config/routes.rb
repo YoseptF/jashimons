@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :mascots, only: %i[index create new]
   resource :config, only: %i[edit update edit]
   resource :user, only: %i[show]
+  post '/set_main/:id', to: "mascots#set_main", as: 'set_main'
   get "/collection", to: "mascots#collection", as: 'collection'
   get "/:id/mainMascot", to: "mascots#main", as: 'main'
   post "/buy/:id", to: "mascots#buy", as: 'buy'

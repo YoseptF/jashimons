@@ -13,24 +13,33 @@ class SessionsController < ApplicationController
   end
 
   def auth
-    user_request = user_info(twitch_token)
+    twitch = twitch_tokens
+    p 'twitch', twitch, twitch[:access_token]
+    user_request = user_info(twitch[:access_token])
 
     json_user = JSON.parse(user_request.body)['data'][0]
 
-    go_to_config(json_user)
+    go_to_config(json_user, twitch)
   end
 
   private
 
-  def go_to_config(json_user)
+  def go_to_config(json_user, twitch)
     p json_user
     if User.find_by(id: json_user['id'])
       log_in(User.find(json_user['id']))
+      current_user.update_attribute(:twitch_token,twitch[:access_token])
+      current_user.update_attribute(:twitch_refresh,twitch[:refresh_token])
     else
-      new_user = User.new(username: json_user['login'], email: json_user['email'], id: json_user['id'], main_string: SecureRandom.base64(10))
+      new_user = User.new(username: json_user['login'],
+                          email: json_user['email'],
+                          id: json_user['id'],
+                          main_string: SecureRandom.base64(10),
+                          twitch_token: twitch[:access_token],
+                          twitch_refresh: twitch[:refresh_token])
+
       new_user.avatar.attach(io: URI(json_user['profile_image_url']).open, filename: "#{json_user['login']}.jpg")
       new_user.save
-      MascotCollection.create(user_id: new_user.id, default: 'idle')
       Config.create(direction: true, show: false, black_list: '', bubble: '', user_id: new_user.id)
       log_in(new_user)
     end
@@ -38,7 +47,7 @@ class SessionsController < ApplicationController
     redirect_to edit_config_path
   end
 
-  def twitch_token
+  def twitch_tokens
     p 'cid: ', ENV['CLIENT_ID']
     client_id = ENV['CLIENT_ID']
     uri = ENV['URL_BACK']
@@ -54,12 +63,12 @@ class SessionsController < ApplicationController
 
     params = {}
     x = Net::HTTP.post_form(URI.parse(url), params)
-    puts 'data', JSON.parse(x.body)
 
-    JSON.parse(x.body)['access_token']
+    { access_token: JSON.parse(x.body)['access_token'], refresh_token: JSON.parse(x.body)['refresh_token'] }
   end
 
   def user_info(access_token)
+    p 'access', access_token
     uri = URI.parse('https://api.twitch.tv/helix/users')
     request = Net::HTTP::Get.new(uri)
     request['Authorization'] = "Bearer #{access_token}"

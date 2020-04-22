@@ -18,5 +18,15 @@
         </div>
       </div>
     </div>
+    <div class="card col-4 mx-3 p-0 profile">
+      <div class="card-header m-0 p-0">
+        <div class="card-header d-flex">
+          <span>Links</span>
+        </div>
+      </div>
+      <div class="card-body row position-relative">
+        <%= link_to main_url(current_user.main_string), main_url(current_user.main_string), target: '_blank' %>
+      </div>
+    </div>
   </div>
 </div>

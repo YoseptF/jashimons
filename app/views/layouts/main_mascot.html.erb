@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/042baba16c.js" crossorigin="anonymous"></script>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= current_user.username %>'s mascot</title>
+  </head>
+  <body>
+    <div class="main-mascot-wrapper">
+      <%= my_main(@user) %>
+    </div>
+    <div class="message">
+      <span>jashigrrrr</span>
+    </div>
+  </body>
+</html>
