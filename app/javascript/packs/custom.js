@@ -10,55 +10,65 @@ document.addEventListener('turbolinks:load', () => {
   //mainMascot show (canvas with mascot to OBS)
   if (message.length) {
     mascotPosition = {}
-    console.log($('.main-mascot-wrapper img'));
     mascotPosition.width = $('.main-mascot-wrapper').outerWidth()
     mascotPosition.height = $('.main-mascot-wrapper').outerWidth()
-    console.log(mascotPosition);
     message.css({
       "top": `${mascotPosition.height / 6}px`,
       "left": `${mascotPosition.width}px`
     })
 
     //get commands
-    let commands = {};
-    const DOMcommands = document.querySelector('.commands')
-    Array.prototype.forEach.call(DOMcommands.children, child => {
-      commands[child.id] = {}
-      Array.prototype.forEach.call(child.children, attr => {
-        commands[child.id][attr.id] = attr.innerText
+
+    const id = window.location.href.split('/')[3]
+
+    fetch(`/commands?id=${id}`)
+      .then(response => response.json())
+      .then(user_commands => {
+        console.log(user_commands);
+        
+        const mascot = document.querySelector('.main-mascot-wrapper img');
+
+        // connect to chat
+        const client = new tmi.Client({
+          connection: {
+            secure: true,
+            reconnect: true
+          },
+          channels: [user_commands.user.username]
+        });
+
+        client.connect();
+
+        client.on('message', (channel, tags, message, self) => {
+          const regexed = message.match(/(\![a-zA-Z0-9]*) ?(.*)/);
+          if(regexed){
+            command = user_commands.configs[regexed[1]]
+            if(command){
+              console.log(command);
+              if (command.message != '') {
+                document.querySelector('.message').style.visibility = 'visible'
+                document.querySelector('.message').firstElementChild.innerHTML = command.message
+                setTimeout(() => {
+                  document.querySelector('.message').style.visibility = 'hidden'
+                }, parseFloat(command.duration) * 1000)
+              }
+              if(command.animation_name != ''){
+                mascot.src = user_commands.mainAnimation[command.animation_name]
+                setTimeout(() => {
+                  mascot.src = user_commands.mainAnimation.idle
+                }, parseFloat(command.duration) * 1000)
+              }
+            }
+          }
+
+        });
       })
-    })
-    console.log('comm: ', commands);
-
-    // connect to chat
-    const client = new tmi.Client({
-      connection: {
-        secure: true,
-        reconnect: true
-      },
-      channels: ['reinodepruebas']
-    });
-
-    client.connect();
-
-    client.on('message', (channel, tags, message, self) => {
-      for (command in commands) {
-        if (message.startsWith(command)) {
-          document.querySelector('.message').style.visibility = 'visible'
-          document.querySelector('.message').firstElementChild.innerHTML = commands[command]['message']
-          setTimeout(() =>{
-            document.querySelector('.message').style.visibility = 'hidden'
-          }, parseFloat(commands[command]['duration']) * 1000 )
-          console.log(document.querySelector('.message'));
-        }
-      }
-
-      console.log(`${tags['display-name']}: ${message}`);
-    });
 
   }
 
   var AUTH_TOKEN = $('meta[name=csrf-token]').attr('content');
+
+
 
   const editForm = (id, datas) => `
   <form action="/commands" accept-charset="UTF-8" method="post">
@@ -117,7 +127,6 @@ document.addEventListener('turbolinks:load', () => {
 
       const datas = Array.prototype.map.call(formData, data => data.innerHTML)
 
-      console.log(datas);
 
       commandFormWrapper.html(editForm(event.target.dataset.id, datas))
     })
