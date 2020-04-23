@@ -43,6 +43,16 @@ button,
   }
 }
 
+table{
+  td{
+    color: white;
+  }
+}
+
+.mainContent{
+  min-height: 600px;
+}
+
 aside {
   border: 1px solid $blue;
   display: flex;
@@ -175,7 +185,8 @@ nav {
         border-radius: 100%;
       }
     }
-    profile-content {
+    .profile-content {
+      padding-top: 6rem;
     }
   }
 }
@@ -245,5 +256,32 @@ nav {
     vertical-align: middle;
     text-align: center;
     padding: 20px;
+  }
+}
+
+.command-form{
+  transition: all 3s linear;
+  position: fixed;
+  width: fit-content;
+  height: fit-content;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+
+  background: $obscure;
+  border: 2px solid $clear;
+  form{
+    width: 30vw;
+    padding: 64px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    input{
+      font-size: 24px;
+      line-height: 24px;
+      padding: 12px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
   }
 }

@@ -1,0 +1,10 @@
+<tr>
+  <td data-id="<%= command.id %>"><%= command.name %></td>
+  <td data-id="<%= command.id %>"><%= command.message %></td>
+  <td data-id="<%= command.id %>"><%= command.animation_name %></td>
+  <td data-id="<%= command.id %>"><%= command.animation_type ? 'Infinite' : 'Finite' %></td>
+  <td data-id="<%= command.id %>"><%= command.duration %></td>
+  <td data-id="<%= command.id %>"><%= command.cooldown %></td>
+  <td data-id="<%= command.id %>"><%= command.isEnabled %></td>
+  <td><%= link_to 'Edit', 'javascript:void(0)', class:'btn btn-block editCommandButton', data: {id: command.id} %></td>
+</tr>

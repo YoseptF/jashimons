@@ -1,0 +1,26 @@
+<div class="card mainCard">
+  <div class="card-header d-flex">
+    <span>Commands</span>
+    <a class="btn ml-auto addCommand" href=javascript:void(0)>Add new Command</a>
+  </div>
+  <div class="card-body row">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Trigger</th>
+          <th scope="col">message</th>
+          <th scope="col">animation_name</th>
+          <th scope="col">animation_type</th>
+          <th scope="col">duration</th>
+          <th scope="col">cooldown</th>
+          <th scope="col">Enabled</th>
+          <th scope="col">&nbsp</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render  @commands %>
+      </tbody>
+    </table>
+    <div class="command-form"></div>
+  </div>
+</div>

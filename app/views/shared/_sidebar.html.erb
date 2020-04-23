@@ -15,24 +15,26 @@
       <span>Options</span>
     <% end %>
   </div>
-  <div class="read-first">
+  <div class="commands">
+    <%= link_to commands_path do %>
     <i class="fas fa-comment-alt"></i>
     <span>Commands</span>
-  </div>
-  <div class="collection">
-    <%= link_to collection_path do %>
-      <i class="fas fa-cat"></i>
-      <span>Collection</span>
-    <% end %>
-  </div>
-  <div class="marketplace">
-    <%= link_to mascots_path do %>
-      <i class="fas fa-store"></i>
-      <span>Marketplace</span>
-    <% end %>
-  </div>
-  <div class="read-first">
-    <i class="fas fa-globe-americas"></i>
-    <span>World</span>
-  </div>
+  <% end %>
+</div>
+<div class="collection">
+  <%= link_to collection_path do %>
+    <i class="fas fa-cat"></i>
+    <span>Collection</span>
+  <% end %>
+</div>
+<div class="marketplace">
+  <%= link_to mascots_path do %>
+    <i class="fas fa-store"></i>
+    <span>Marketplace</span>
+  <% end %>
+</div>
+<div class="read-first">
+  <i class="fas fa-globe-americas"></i>
+  <span>World</span>
+</div>
 </aside>

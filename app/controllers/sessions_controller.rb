@@ -4,7 +4,11 @@ require 'open-uri'
 
 class SessionsController < ApplicationController
   def login
-    redirect_to "https://id.twitch.tv/oauth2/authorize?client_id=#{ENV['CLIENT_ID']}&redirect_uri=#{ENV['URL_BACK']}&response_type=code&scope=user:edit+user:read:email"
+    redirect_to 'https://id.twitch.tv/oauth2/authorize?'\
+    "client_id=#{ENV['CLIENT_ID']}"\
+    "&redirect_uri=#{ENV['URL_BACK']}"\
+    '&response_type=code'\
+    '&scope=user:edit+user:read:email'
   end
 
   def logout
@@ -28,8 +32,8 @@ class SessionsController < ApplicationController
     p json_user
     if User.find_by(id: json_user['id'])
       log_in(User.find(json_user['id']))
-      current_user.update_attribute(:twitch_token,twitch[:access_token])
-      current_user.update_attribute(:twitch_refresh,twitch[:refresh_token])
+      current_user.update_attribute(:twitch_token, twitch[:access_token])
+      current_user.update_attribute(:twitch_refresh, twitch[:refresh_token])
     else
       new_user = User.new(username: json_user['login'],
                           email: json_user['email'],
@@ -41,6 +45,8 @@ class SessionsController < ApplicationController
       new_user.avatar.attach(io: URI(json_user['profile_image_url']).open, filename: "#{json_user['login']}.jpg")
       new_user.save
       Config.create(direction: true, show: false, black_list: '', bubble: '', user_id: new_user.id)
+      Command.create(name: 'dance', message: '', animation_name: 'idle', animation_type: true,
+                     duration: 1, cooldown: 2, isEnabled: true, user_id: new_user.id)
       log_in(new_user)
     end
 
