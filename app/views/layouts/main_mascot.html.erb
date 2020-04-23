@@ -6,14 +6,25 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= current_user.username %>'s mascot</title>
+    <title><%= @user.username %>'s mascot</title>
   </head>
   <body>
     <div class="main-mascot-wrapper">
       <%= my_main(@user) %>
     </div>
     <div class="message">
-      <span>jashigrrrr</span>
+      <span></span>
     </div>
-  </body>
-</html>
+    <div class="commands">
+      <% @user.commands.each do |command| %>
+        <div id="<%= command.name %>">
+          <div id="message"><%= command.message %></div>
+          <div id="animation_name"><%= command.animation_name %></div>
+          <div id="animation_type"><%= command.animation_type %></div>
+          <div id="duration"><%= command.duration %></div>
+          <div id="cooldown"><%= command.cooldown %></div>
+          <div id="esEnabled"><%= command.isEnabled %></div>
+        </div>
+      <% end %>
+    </body>
+  </html>
